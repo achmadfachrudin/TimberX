@@ -71,7 +71,7 @@ class SplashActivity : PermissionsActivity() {
             if (dir.exists() && dir.isDirectory) {
                 val children = dir.listFiles()
                 if (children.isNullOrEmpty()) {
-                    toast("load song")
+                    // toast("load song")
 
                     copy()
                     // downloadSong()
@@ -93,6 +93,8 @@ class SplashActivity : PermissionsActivity() {
         val bufferSize = 1024
         val assetManager = this.assets
         val assetFiles = assetManager.list("")
+
+        if (assetFiles.isNullOrEmpty()) toast("list song empty")
 
         val totalSong = assetFiles?.size ?: 0
 
@@ -140,7 +142,7 @@ class SplashActivity : PermissionsActivity() {
             }
         }
 
-        textDescription.text = "Wait a second"
+        // textDescription.text = "Wait a second"
 
         Handler().postDelayed({
             goToMain()
