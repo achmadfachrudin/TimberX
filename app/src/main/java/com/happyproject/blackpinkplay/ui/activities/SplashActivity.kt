@@ -71,6 +71,8 @@ class SplashActivity : PermissionsActivity() {
             if (dir.exists() && dir.isDirectory) {
                 val children = dir.listFiles()
                 if (children.isNullOrEmpty()) {
+                    toast("load song")
+
                     copy()
                     // downloadSong()
                 } else {
@@ -82,6 +84,8 @@ class SplashActivity : PermissionsActivity() {
                 copy()
                 // downloadSong()
             }
+        } else {
+            toast("app not published")
         }
     }
 
@@ -94,7 +98,7 @@ class SplashActivity : PermissionsActivity() {
 
         assetFiles?.forEachIndexed { index, item ->
             val position = index + 1
-            textDescription.text = "Download songs... ($position of $totalSong)"
+            textDescription.text = "Load songs... ($position of $totalSong)"
 
             if (item.contains(".mp3")) {
                 val inputStream = assetManager.open(item)
