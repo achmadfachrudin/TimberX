@@ -36,10 +36,12 @@ import com.happyproject.aespa.constants.AppThemes
 import com.happyproject.aespa.databinding.MainActivityBinding
 import com.happyproject.aespa.extensions.addFragment
 import com.happyproject.aespa.extensions.filter
+import com.happyproject.aespa.extensions.hide
 import com.happyproject.aespa.extensions.map
 import com.happyproject.aespa.extensions.observe
 import com.happyproject.aespa.extensions.replaceFragment
 import com.happyproject.aespa.extensions.setDataBindingContentView
+import com.happyproject.aespa.extensions.show
 import com.happyproject.aespa.models.MediaID
 import com.happyproject.aespa.repository.SongsRepository
 import com.happyproject.aespa.ui.activities.base.PermissionsActivity
