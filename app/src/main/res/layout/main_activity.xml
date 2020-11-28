@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.happyproject.blackpinkplay.ui.viewmodels.MainViewModel" />
+            type="com.happyproject.aespa.ui.viewmodels.MainViewModel" />
     </data>
 
     <FrameLayout

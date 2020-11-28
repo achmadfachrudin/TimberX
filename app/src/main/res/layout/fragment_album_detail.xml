@@ -4,11 +4,11 @@
 
     <data>
 
-        <import type="com.happyproject.blackpinkplay.network.models.ArtworkSize" />
+        <import type="com.happyproject.aespa.network.models.ArtworkSize" />
 
         <variable
             name="album"
-            type="com.happyproject.blackpinkplay.models.Album" />
+            type="com.happyproject.aespa.models.Album" />
     </data>
 
     <androidx.core.widget.NestedScrollView
