@@ -56,12 +56,12 @@ class SplashActivity : PermissionsActivity() {
     }
 
     private fun checkSavedSong() {
-        val remoteConfig = Firebase.remoteConfig
-        val configSettings = remoteConfigSettings {
-            minimumFetchIntervalInSeconds = 3600
-        }
-        remoteConfig.setConfigSettingsAsync(configSettings)
-        remoteConfig.fetchAndActivate()
+        // val remoteConfig = Firebase.remoteConfig
+        // val configSettings = remoteConfigSettings {
+        //     minimumFetchIntervalInSeconds = 3600
+        // }
+        // remoteConfig.setConfigSettingsAsync(configSettings)
+        // remoteConfig.fetchAndActivate()
 
         val dir = File(
             Environment.getExternalStorageDirectory().toString() + "/" + APP_PACKAGE_NAME
@@ -83,11 +83,11 @@ class SplashActivity : PermissionsActivity() {
             // downloadSong()
         }
 
-        if (remoteConfig.getBoolean("isPublish")) {
-
-        } else {
-            toast("app not published")
-        }
+        // if (remoteConfig.getBoolean("isPublish")) {
+        //
+        // } else {
+        //     toast("app not published")
+        // }
     }
 
     private fun copy() {

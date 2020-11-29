@@ -23,6 +23,7 @@ import android.provider.MediaStore.INTENT_ACTION_MEDIA_PLAY_FROM_SEARCH
 import android.view.View
 import android.widget.FrameLayout
 import androidx.annotation.NonNull
+import androidx.lifecycle.lifecycleScope
 import androidx.mediarouter.app.MediaRouteButton
 import com.afollestad.rxkprefs.Pref
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -42,6 +43,7 @@ import com.happyproject.secretnumber.extensions.observe
 import com.happyproject.secretnumber.extensions.replaceFragment
 import com.happyproject.secretnumber.extensions.setDataBindingContentView
 import com.happyproject.secretnumber.extensions.show
+import com.happyproject.secretnumber.extensions.toast
 import com.happyproject.secretnumber.models.MediaID
 import com.happyproject.secretnumber.repository.SongsRepository
 import com.happyproject.secretnumber.ui.activities.base.PermissionsActivity
@@ -51,6 +53,8 @@ import com.happyproject.secretnumber.ui.fragments.MainFragment
 import com.happyproject.secretnumber.ui.fragments.base.MediaItemFragment
 import com.happyproject.secretnumber.ui.viewmodels.MainViewModel
 import com.happyproject.secretnumber.ui.widgets.BottomSheetListener
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -64,7 +68,7 @@ class MainActivity : PermissionsActivity(), DeleteSongDialog.OnSongDeleted {
     private var bottomSheetListener: BottomSheetListener? = null
     private var bottomSheetBehavior: BottomSheetBehavior<View>? = null
 
-    // private var backPressedOnce = false
+    private var backPressedOnce = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(appThemePref.get().themeRes)
@@ -74,88 +78,6 @@ class MainActivity : PermissionsActivity(), DeleteSongDialog.OnSongDeleted {
 
         setupUI()
     }
-
-    // private fun checkSavedSong() {
-    //     val dir = File(Environment.getExternalStorageDirectory().toString() + "/" + PACKAGE_NAME)
-    //     if (dir.exists() && dir.isDirectory) {
-    //         val children = dir.listFiles()
-    //         if (children.isNullOrEmpty()) {
-    //             copy()
-    //         } else {
-    //             setupUI()
-    //         }
-    //     } else {
-    //         toast("directory not found")
-    //         dir.mkdirs()
-    //         copy()
-    //     }
-    // }
-
-    // private fun copy() {
-    //     binding?.slidingLayout?.hide()
-    //     binding?.containerDownload?.show()
-    //
-    //     val bufferSize = 1024
-    //     val assetManager = this.assets
-    //     val assetFiles = assetManager.list("")
-    //
-    //     assetFiles?.forEach {
-    //         if (it.contains(".mp3")) {
-    //             val inputStream = assetManager.open(it)
-    //             val outputStream = FileOutputStream(
-    //                 File(
-    //                     Environment.getExternalStorageDirectory().toString() + "/" + PACKAGE_NAME,
-    //                     it
-    //                 )
-    //             )
-    //
-    //             try {
-    //                 inputStream.copyTo(outputStream, bufferSize)
-    //             } finally {
-    //                 inputStream.close()
-    //                 outputStream.flush()
-    //                 outputStream.close()
-    //             }
-    //         }
-    //     }
-    //
-    //     binding?.slidingLayout?.show()
-    //     binding?.containerDownload?.hide()
-    //
-    //     Handler().postDelayed({
-    //         setupUI()
-    //     }, 1000)
-    // }
-
-    // private fun downloadSong() {
-    //     val storage = Firebase.storage
-    //     val listRef = storage.reference.child("audio")
-    //     listRef.listAll()
-    //         .addOnSuccessListener { (items, prefixes) ->
-    //             prefixes.forEach { prefix ->
-    //                 // All the prefixes under listRef.
-    //                 // You may call listAll() recursively on them.
-    //             }
-    //             binding?.slidingLayout?.hide()
-    //             binding?.containerDownload?.show()
-    //             val totalSong = items.size
-    //
-    //             items.forEachIndexed { index, item ->
-    //                 // All the items under listRef.
-    //                 // toast(item.name)
-    //             }
-    //             val itemsList = items
-    //             val list = items
-    //
-    //             // binding?.slidingLayout?.show()
-    //             // binding?.containerDownload?.hide()
-    //             // toast("Download completed")
-    //         }
-    //         .addOnFailureListener {
-    //             toast("Failed when fetch songs")
-    //             // Uh-oh, an error occurred!
-    //         }
-    // }
 
     fun setBottomSheetListener(bottomSheetListener: BottomSheetListener) {
         this.bottomSheetListener = bottomSheetListener
@@ -180,16 +102,18 @@ class MainActivity : PermissionsActivity(), DeleteSongDialog.OnSongDeleted {
             if (it.state == STATE_EXPANDED) {
                 collapseBottomSheet()
             } else {
-                super.onBackPressed()
-                // if (backPressedOnce) {
-                //     super.onBackPressed()
-                //     return
-                // }
-                //
-                // backPressedOnce = true
-                // toast("Press back again to exit")
-                //
-                // lifecycleScope.launch { delay(2000) }
+                if (backPressedOnce) {
+                    super.onBackPressed()
+                    return
+                }
+
+                backPressedOnce = true
+                toast("Press back again to exit")
+
+                lifecycleScope.launch {
+                    delay(2000)
+                    backPressedOnce = false
+                }
             }
         }
     }
@@ -213,7 +137,7 @@ class MainActivity : PermissionsActivity(), DeleteSongDialog.OnSongDeleted {
     }
 
     private fun setupUI() {
-        viewModel.rootMediaId.observe(this) {
+        viewModel.rootMediaId.observe(this, {
             replaceFragment(fragment = MainFragment())
             Handler().postDelayed({
                 replaceFragment(
@@ -224,7 +148,7 @@ class MainActivity : PermissionsActivity(), DeleteSongDialog.OnSongDeleted {
 
             //handle playback intents, (search intent or ACTION_VIEW intent)
             handlePlaybackIntent(intent)
-        }
+        })
 
         viewModel.navigateToMediaItem
             .map { it.getContentIfNotHandled() }
