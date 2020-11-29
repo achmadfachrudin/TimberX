@@ -33,7 +33,7 @@ private const val TYPE_SONG_HEADER = 0
 private const val TYPE_SONG_ITEM = 1
 private const val INVALID_POSITION = -1
 
-class SongsAdapter(val lifecycleOwner: LifecycleOwner) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SongsAdapter(lifecycleOwner: LifecycleOwner) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var songs: List<Song> = emptyList()
     var showHeader = false
     var isQueue = false

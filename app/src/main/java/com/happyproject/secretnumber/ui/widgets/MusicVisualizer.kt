@@ -72,10 +72,10 @@ class MusicVisualizer : View {
 
     override fun onWindowVisibilityChanged(visibility: Int) {
         super.onWindowVisibilityChanged(visibility)
-        if (visibility == View.VISIBLE) {
+        if (visibility == VISIBLE) {
             removeCallbacks(animateView)
             post(animateView)
-        } else if (visibility == View.GONE) {
+        } else if (visibility == GONE) {
             removeCallbacks(animateView)
         }
     }

@@ -24,11 +24,11 @@ enum class StartPage(val index: Int) {
 
     companion object {
         fun fromString(raw: String): StartPage {
-            return StartPage.values().single { it.name.toLowerCase() == raw }
+            return values().single { it.name.toLowerCase() == raw }
         }
 
         fun fromIndex(index: Int): StartPage {
-            return StartPage.values().single { it.index == index }
+            return values().single { it.index == index }
         }
 
         fun toString(value: StartPage): String = value.name.toLowerCase()

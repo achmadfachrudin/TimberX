@@ -43,11 +43,11 @@ class CastServer(private val context: Context) : NanoHTTPD(CAST_SERVER_PORT) {
 
     override fun serve(
         uri: String?,
-        method: NanoHTTPD.Method?,
+        method: Method?,
         header: Map<String, String>?,
         parameters: Map<String, String>?,
         files: Map<String, String>?
-    ): NanoHTTPD.Response {
+    ): Response {
         if (uri?.contains(PART_ALBUM_ART) == true) {
             // SERVE ALBUM ART
             val albumId = parameters?.get(PARAM_ID) ?: return errorResponse()

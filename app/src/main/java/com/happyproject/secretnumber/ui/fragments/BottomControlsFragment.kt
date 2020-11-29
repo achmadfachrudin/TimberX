@@ -43,9 +43,11 @@ import com.happyproject.secretnumber.constants.Constants.ACTION_RESTORE_MEDIA_SE
 import com.happyproject.secretnumber.constants.Constants.NOW_PLAYING
 import com.happyproject.secretnumber.databinding.LayoutBottomsheetControlsBinding
 import com.happyproject.secretnumber.extensions.addFragment
+import com.happyproject.secretnumber.extensions.hide
 import com.happyproject.secretnumber.extensions.inflateWithBinding
 import com.happyproject.secretnumber.extensions.map
 import com.happyproject.secretnumber.extensions.observe
+import com.happyproject.secretnumber.extensions.show
 import com.happyproject.secretnumber.models.CastStatus
 import com.happyproject.secretnumber.models.CastStatus.Companion.STATUS_PLAYING
 import com.happyproject.secretnumber.network.models.ArtworkSize
@@ -191,7 +193,7 @@ class BottomControlsFragment : BaseNowPlayingFragment(), BottomSheetListener {
             if (it.isCasting) {
                 isCasting = true
 
-                mainViewModel.castProgressLiveData.observe(this, castProgressObserver)
+                mainViewModel.castProgressLiveData.observe(viewLifecycleOwner, castProgressObserver)
                 setLastFmAlbumImage(binding.bottomContolsAlbumart, it.castSongArtist, it.castSongAlbum, ArtworkSize.SMALL, it.castAlbumId.toLong())
 
                 binding.songArtist.text = getString(R.string.casting_to_x, it.castDeviceName)
@@ -220,7 +222,7 @@ class BottomControlsFragment : BaseNowPlayingFragment(), BottomSheetListener {
                 .observe(this) {
                     when (it) {
                         ACTION_CAST_CONNECTED -> {
-                            mainViewModel.castLiveData.observe(this, castStatusObserver)
+                            mainViewModel.castLiveData.observe(viewLifecycleOwner, castStatusObserver)
                         }
                         ACTION_CAST_DISCONNECTED -> {
                             isCasting = false

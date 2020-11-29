@@ -26,7 +26,7 @@ class MediaID(var type: String? = null, var mediaId: String? = "NA", var caller:
         private const val CALLER = "caller: "
         private const val SEPARATOR = " | "
 
-        var currentCaller: String? = MediaID.CALLER_SELF
+        var currentCaller: String? = CALLER_SELF
     }
 
     var mediaItem: MediaBrowserCompat.MediaItem? = null

@@ -52,7 +52,7 @@ class BecomingNoisyReceiver(
     }
 
     override fun onReceive(context: Context, intent: Intent) {
-        if (intent.action == AudioManager.ACTION_AUDIO_BECOMING_NOISY) {
+        if (intent.action == ACTION_AUDIO_BECOMING_NOISY) {
             controller.transportControls.pause()
         }
     }

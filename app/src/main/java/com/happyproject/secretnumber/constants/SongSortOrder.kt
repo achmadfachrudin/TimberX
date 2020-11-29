@@ -28,7 +28,7 @@ enum class SongSortOrder(val rawValue: String) {
 
     companion object {
         fun fromString(raw: String): SongSortOrder {
-            return SongSortOrder.values().single { it.rawValue == raw }
+            return values().single { it.rawValue == raw }
         }
 
         fun toString(value: SongSortOrder): String = value.rawValue

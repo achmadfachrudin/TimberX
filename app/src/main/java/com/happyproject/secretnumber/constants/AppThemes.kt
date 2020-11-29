@@ -23,7 +23,7 @@ enum class AppThemes(val rawValue: String, val themeRes: Int) {
 
     companion object {
         fun fromString(raw: String): AppThemes {
-            return AppThemes.values().single { it.rawValue == raw }
+            return values().single { it.rawValue == raw }
         }
 
         fun toString(value: AppThemes): String = value.rawValue

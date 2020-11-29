@@ -49,7 +49,7 @@ data class MediaData(
         duration = metaData.getLong(METADATA_KEY_DURATION).toInt()
         artwork = metaData.getBitmap(METADATA_KEY_ALBUM_ART)
         //this is the album id
-        artworkId = metaData.getString(METADATA_KEY_ALBUM_ART_URI)?.let { it.toLong() } ?: 0
+        artworkId = metaData.getString(METADATA_KEY_ALBUM_ART_URI)?.toLong() ?: 0
         return this
     }
 

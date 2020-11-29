@@ -20,19 +20,19 @@ import android.support.v4.media.MediaMetadataCompat
 /**
  * Useful extensions for [MediaMetadataCompat].
  */
-inline val MediaMetadataCompat.id get() = getString(MediaMetadataCompat.METADATA_KEY_MEDIA_ID)
+inline val MediaMetadataCompat.id: String get() = getString(MediaMetadataCompat.METADATA_KEY_MEDIA_ID)
 
-inline val MediaMetadataCompat.title get() = getString(MediaMetadataCompat.METADATA_KEY_TITLE)
+inline val MediaMetadataCompat.title: String get() = getString(MediaMetadataCompat.METADATA_KEY_TITLE)
 
-inline val MediaMetadataCompat.artist get() = getString(MediaMetadataCompat.METADATA_KEY_ARTIST)
+inline val MediaMetadataCompat.artist: String get() = getString(MediaMetadataCompat.METADATA_KEY_ARTIST)
 
 inline val MediaMetadataCompat.duration get() = getLong(MediaMetadataCompat.METADATA_KEY_DURATION)
 
-inline val MediaMetadataCompat.album get() = getString(MediaMetadataCompat.METADATA_KEY_ALBUM)
+inline val MediaMetadataCompat.album: String get() = getString(MediaMetadataCompat.METADATA_KEY_ALBUM)
 
-inline val MediaMetadataCompat.genre get() = getString(MediaMetadataCompat.METADATA_KEY_GENRE)
+inline val MediaMetadataCompat.genre: String get() = getString(MediaMetadataCompat.METADATA_KEY_GENRE)
 
-inline val MediaMetadataCompat.albumArt
+inline val MediaMetadataCompat.albumArt: Bitmap
     get() = getBitmap(MediaMetadataCompat.METADATA_KEY_ALBUM_ART)
 
 // These do not have getters, so create a message for the error.

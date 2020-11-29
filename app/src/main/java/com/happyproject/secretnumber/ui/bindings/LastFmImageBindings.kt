@@ -172,6 +172,7 @@ private fun fetchArtistImage(
                         Timber.d("""getArtistInfo("$artistName") image URL: $url""")
                         callback(url)
                     }
+                    else -> {}
                 }
             }
             .disposeOnDetach(view)
@@ -199,6 +200,7 @@ private fun fetchAlbumImage(
                         Timber.d("""getAlbumInfo("$albumName") image URL: $url""")
                         callback(url)
                     }
+                    else -> {}
                 }
             }
             .disposeOnDetach(view)

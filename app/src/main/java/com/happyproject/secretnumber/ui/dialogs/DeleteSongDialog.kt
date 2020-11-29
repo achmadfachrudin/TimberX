@@ -38,7 +38,7 @@ class DeleteSongDialog : DialogFragment() {
 
     @NonNull
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return MaterialDialog(activity!!).show {
+        return MaterialDialog(requireActivity()).show {
             title(R.string.delete_song_prompt)
             positiveButton(R.string.delete) {
                 val songs = arguments?.getLongArray(SONGS) ?: return@positiveButton

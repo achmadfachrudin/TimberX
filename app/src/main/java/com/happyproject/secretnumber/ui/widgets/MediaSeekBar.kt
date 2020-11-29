@@ -44,7 +44,7 @@ class MediaSeekBar : AppCompatSeekBar {
     private val mDurationScale = Settings.Global.getFloat(context.contentResolver,
             Settings.Global.ANIMATOR_DURATION_SCALE, 1f)
 
-    private val mOnSeekBarChangeListener = object : SeekBar.OnSeekBarChangeListener {
+    private val mOnSeekBarChangeListener = object : OnSeekBarChangeListener {
         override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {}
 
         override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -70,7 +70,7 @@ class MediaSeekBar : AppCompatSeekBar {
         super.setOnSeekBarChangeListener(mOnSeekBarChangeListener)
     }
 
-    override fun setOnSeekBarChangeListener(l: SeekBar.OnSeekBarChangeListener) {
+    override fun setOnSeekBarChangeListener(l: OnSeekBarChangeListener) {
         // Prohibit adding seek listeners to this subclass.
         throw UnsupportedOperationException("Cannot add listeners to a MediaSeekBar")
     }

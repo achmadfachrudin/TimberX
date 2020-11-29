@@ -194,13 +194,13 @@ class TimberMusicService : MediaBrowserServiceCompat(), KoinComponent, Lifecycle
     }
 
     @Nullable
-    override fun onGetRoot(clientPackageName: String, clientUid: Int, rootHints: Bundle?): MediaBrowserServiceCompat.BrowserRoot? {
+    override fun onGetRoot(clientPackageName: String, clientUid: Int, rootHints: Bundle?): BrowserRoot? {
         val caller = if (clientPackageName == APP_PACKAGE_NAME) {
             CALLER_SELF
         } else {
             CALLER_OTHER
         }
-        return MediaBrowserServiceCompat.BrowserRoot(MediaID(MEDIA_ID_ROOT.toString(), null, caller).asString(), null)
+        return BrowserRoot(MediaID(MEDIA_ID_ROOT.toString(), null, caller).asString(), null)
     }
 
     private fun addMediaRoots(mMediaRoot: MutableList<MediaBrowserCompat.MediaItem>, caller: String) {

@@ -36,10 +36,12 @@ import com.happyproject.secretnumber.constants.AppThemes
 import com.happyproject.secretnumber.databinding.MainActivityBinding
 import com.happyproject.secretnumber.extensions.addFragment
 import com.happyproject.secretnumber.extensions.filter
+import com.happyproject.secretnumber.extensions.hide
 import com.happyproject.secretnumber.extensions.map
 import com.happyproject.secretnumber.extensions.observe
 import com.happyproject.secretnumber.extensions.replaceFragment
 import com.happyproject.secretnumber.extensions.setDataBindingContentView
+import com.happyproject.secretnumber.extensions.show
 import com.happyproject.secretnumber.models.MediaID
 import com.happyproject.secretnumber.repository.SongsRepository
 import com.happyproject.secretnumber.ui.activities.base.PermissionsActivity
