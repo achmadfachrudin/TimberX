@@ -82,7 +82,7 @@ class SplashActivity : PermissionsActivity() {
             copy()
             // downloadSong()
         }
-        
+
         if (remoteConfig.getBoolean("isPublish")) {
         } else {
             toast("app not published")
