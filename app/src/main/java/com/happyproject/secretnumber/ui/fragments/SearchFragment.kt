@@ -113,7 +113,7 @@ class SearchFragment : BaseNowPlayingFragment() {
 
         binding.let {
             it.viewModel = searchViewModel
-            it.setLifecycleOwner(this)
+            it.lifecycleOwner = this
         }
     }
 }
