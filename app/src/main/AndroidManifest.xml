@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.happyproject.secretnumber">
+    package="com.happyproject.secretnumberplay">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
-        android:name="com.happyproject.secretnumber.TimberXApp"
+        android:name="com.happyproject.secretnumberplay.TimberXApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -31,7 +31,7 @@
             android:value="@string/ads_app" />
 
         <activity
-            android:name="com.happyproject.secretnumber.ui.activities.SplashActivity"
+            android:name="com.happyproject.secretnumberplay.ui.activities.SplashActivity"
             android:theme="@style/AppTheme.Light">
 
             <intent-filter>
@@ -42,7 +42,7 @@
         </activity>
 
         <activity
-            android:name="com.happyproject.secretnumber.ui.activities.MainActivity"
+            android:name="com.happyproject.secretnumberplay.ui.activities.MainActivity"
             android:theme="@style/AppTheme.Light">
             <intent-filter>
                 <action android:name="android.intent.action.MUSIC_PLAYER" />
@@ -92,12 +92,12 @@
         </activity>
 
         <activity
-            android:name="com.happyproject.secretnumber.ui.activities.ExpandedControlsActivity"
+            android:name="com.happyproject.secretnumberplay.ui.activities.ExpandedControlsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name="com.happyproject.secretnumber.ui.activities.SettingsActivity" />
+        <activity android:name="com.happyproject.secretnumberplay.ui.activities.SettingsActivity" />
 
         <service
-            android:name="com.happyproject.secretnumber.playback.TimberMusicService"
+            android:name="com.happyproject.secretnumberplay.playback.TimberMusicService"
             android:enabled="true"
             android:exported="true">
 

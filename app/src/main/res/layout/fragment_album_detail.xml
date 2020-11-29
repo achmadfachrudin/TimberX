@@ -4,11 +4,11 @@
 
     <data>
 
-        <import type="com.happyproject.secretnumber.network.models.ArtworkSize" />
+        <import type="com.happyproject.secretnumberplay.network.models.ArtworkSize" />
 
         <variable
             name="album"
-            type="com.happyproject.secretnumber.models.Album" />
+            type="com.happyproject.secretnumberplay.models.Album" />
     </data>
 
     <androidx.core.widget.NestedScrollView

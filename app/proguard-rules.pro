@@ -24,7 +24,7 @@
 -keepclassmembers class **.R$* {
     public static <fields>;
 }
--keep class com.happyproject.secretnumber.R$raw { *; }
+-keep class com.happyproject.secretnumberplay.R$raw { *; }
 
 # JAudioTagger
 -dontwarn org.jaudiotagger.**

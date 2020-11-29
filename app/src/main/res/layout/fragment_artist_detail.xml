@@ -5,14 +5,14 @@
     >
 
   <data>
-    <import type="com.happyproject.secretnumber.network.models.ArtworkSize"/>
+    <import type="com.happyproject.secretnumberplay.network.models.ArtworkSize"/>
     <variable
         name="artist"
-        type="com.happyproject.secretnumber.models.Artist"
+        type="com.happyproject.secretnumberplay.models.Artist"
         />
     <variable
         name="artistInfo"
-        type="com.happyproject.secretnumber.network.models.ArtistInfo"
+        type="com.happyproject.secretnumberplay.network.models.ArtistInfo"
         />
   </data>
 
@@ -33,7 +33,7 @@
           android:layout_height="270dp"
           >
 
-        <com.happyproject.secretnumber.ui.widgets.SquareImageView
+        <com.happyproject.secretnumberplay.ui.widgets.SquareImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/default_album_art_large"

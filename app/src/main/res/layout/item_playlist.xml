@@ -5,7 +5,7 @@
 
         <variable
             name="playlist"
-            type="com.happyproject.secretnumber.models.Playlist" />
+            type="com.happyproject.secretnumberplay.models.Playlist" />
     </data>
 
     <LinearLayout

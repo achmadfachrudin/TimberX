@@ -6,7 +6,7 @@
 
         <variable
             name="categorySongData"
-            type="com.happyproject.secretnumber.models.CategorySongData" />
+            type="com.happyproject.secretnumberplay.models.CategorySongData" />
     </data>
 
     <LinearLayout

@@ -37,7 +37,7 @@
                 android:singleLine="true"
                 android:text="@{@plurals/number_songs(songCount, songCount)}" />
 
-            <com.happyproject.secretnumber.ui.widgets.SongSortMenu
+            <com.happyproject.secretnumberplay.ui.widgets.SongSortMenu
                 android:id="@+id/sortMenu"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
