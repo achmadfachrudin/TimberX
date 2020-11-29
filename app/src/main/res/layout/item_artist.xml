@@ -2,10 +2,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
   <data>
-    <import type="com.happyproject.aespa.network.models.ArtworkSize"/>
+    <import type="com.happyproject.secretnumber.network.models.ArtworkSize"/>
     <variable
         name="artist"
-        type="com.happyproject.aespa.models.Artist"
+        type="com.happyproject.secretnumber.models.Artist"
         />
   </data>
 
@@ -19,7 +19,7 @@
       android:paddingTop="6dp"
       >
 
-    <com.happyproject.aespa.ui.widgets.SquareImageView
+    <com.happyproject.secretnumber.ui.widgets.SquareImageView
         android:id="@+id/albumArt"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
