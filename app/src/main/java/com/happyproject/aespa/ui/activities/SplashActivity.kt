@@ -84,7 +84,7 @@ class SplashActivity : PermissionsActivity() {
         }
 
         if (remoteConfig.getBoolean("isPublish")) {
-            
+
         } else {
             toast("app not published")
         }
