@@ -29,6 +29,7 @@ object CheckSong {
     fun getValidAlbum(
         list: List<MediaBrowserCompat.MediaItem>
     ): List<Album> {
+
         val albumList: MutableList<Album> = mutableListOf()
 
         list.forEach {
