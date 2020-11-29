@@ -18,7 +18,12 @@ object CheckSong {
         list.forEach {
             val song = (it as Song)
 
-            if (song.path.contains(Constants.APP_PACKAGE_NAME) && song.artist.contains(ARTIST_NAME, true)) {
+            if (song.path.contains(Constants.APP_PACKAGE_NAME) &&
+                song.artist
+                    .replace(" ", "")
+                    .replace("-", "")
+                    .contains(ARTIST_NAME, true)
+            ) {
                 songList.add(song)
             }
         }
@@ -29,12 +34,17 @@ object CheckSong {
     fun getValidAlbum(
         list: List<MediaBrowserCompat.MediaItem>
     ): List<Album> {
+
         val albumList: MutableList<Album> = mutableListOf()
 
         list.forEach {
             val album = (it as Album)
 
-            if (album.artist.contains(ARTIST_NAME, true)) {
+            if (album.artist
+                    .replace(" ", "")
+                    .replace("-", "")
+                    .contains(ARTIST_NAME, true)
+            ) {
                 albumList.add(album)
             }
         }

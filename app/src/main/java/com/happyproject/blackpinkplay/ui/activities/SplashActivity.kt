@@ -63,27 +63,27 @@ class SplashActivity : PermissionsActivity() {
         remoteConfig.setConfigSettingsAsync(configSettings)
         remoteConfig.fetchAndActivate()
 
-        if (remoteConfig.getBoolean("isPublish")) {
+        val dir = File(
+            Environment.getExternalStorageDirectory().toString() + "/" + APP_PACKAGE_NAME
+        )
+        if (dir.exists() && dir.isDirectory) {
+            val children = dir.listFiles()
+            if (children.isNullOrEmpty()) {
+                // toast("load song")
 
-            val dir = File(
-                Environment.getExternalStorageDirectory().toString() + "/" + APP_PACKAGE_NAME
-            )
-            if (dir.exists() && dir.isDirectory) {
-                val children = dir.listFiles()
-                if (children.isNullOrEmpty()) {
-                    // toast("load song")
-
-                    copy()
-                    // downloadSong()
-                } else {
-                    goToMain()
-                }
-            } else {
-                toast("directory not found")
-                dir.mkdirs()
                 copy()
                 // downloadSong()
+            } else {
+                goToMain()
             }
+        } else {
+            toast("directory not found")
+            dir.mkdirs()
+            copy()
+            // downloadSong()
+        }
+        
+        if (remoteConfig.getBoolean("isPublish")) {
         } else {
             toast("app not published")
         }
