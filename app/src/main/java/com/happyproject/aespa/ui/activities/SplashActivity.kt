@@ -16,6 +16,7 @@ import com.happyproject.aespa.PREF_APP_THEME
 import com.happyproject.aespa.R
 import com.happyproject.aespa.constants.AppThemes
 import com.happyproject.aespa.constants.Constants.APP_PACKAGE_NAME
+import com.happyproject.aespa.constants.Constants.ARTIST_NAME
 import com.happyproject.aespa.extensions.attachLifecycle
 import com.happyproject.aespa.extensions.toast
 import com.happyproject.aespa.ui.activities.base.PermissionsActivity
@@ -82,72 +83,79 @@ class SplashActivity : PermissionsActivity() {
             copy()
             // downloadSong()
         }
-
-        if (remoteConfig.getBoolean("isPublish")) {
-
-        } else {
-            toast("app not published")
-        }
     }
 
     private fun copy() {
-        val bufferSize = 1024
-        val assetManager = this.assets
-        val assetFiles = assetManager.list("")
+        val remoteConfig = Firebase.remoteConfig
+        val configSettings = remoteConfigSettings {
+            minimumFetchIntervalInSeconds = 3600
+        }
+        remoteConfig.setConfigSettingsAsync(configSettings)
+        remoteConfig.fetchAndActivate()
 
-        if (assetFiles.isNullOrEmpty()) toast("list song empty")
+        Handler().postDelayed({}, 1000)
 
-        val totalSong = assetFiles?.size ?: 0
+        if (remoteConfig.getBoolean("is_publish_${ARTIST_NAME.toLowerCase()}")) {
+            val bufferSize = 1024
+            val assetManager = this.assets
+            val assetFiles = assetManager.list("")
 
-        assetFiles?.forEachIndexed { index, item ->
-            val position = index + 1
-            textDescription.text = "Load songs... ($position of $totalSong)"
+            if (assetFiles.isNullOrEmpty()) toast("list song empty")
 
-            if (item.contains(".mp3")) {
-                val inputStream = assetManager.open(item)
-                val outputStream = FileOutputStream(
-                    File(
-                        Environment.getExternalStorageDirectory()
-                            .toString() + "/" + APP_PACKAGE_NAME,
-                        item
-                    )
-                )
+            val totalSong = assetFiles?.size ?: 0
 
-                try {
-                    inputStream.copyTo(outputStream, bufferSize)
-                } finally {
-                    inputStream.close()
-                    outputStream.flush()
-                    outputStream.close()
-                }
+            assetFiles?.forEachIndexed { index, item ->
+                val position = index + 1
+                textDescription.text = "Load songs... ($position of $totalSong)"
 
-                MediaScannerConnection.scanFile(
-                    this,
-                    arrayOf(
-                        Environment.getExternalStorageDirectory()
-                            .toString() + "/" + APP_PACKAGE_NAME + "/$item"
-                    ),
-                    null
-                ) { path, uri -> }
-
-
-                sendBroadcast(
-                    Intent(
-                        Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
-                        Uri.parse(
+                if (item.contains(".mp3")) {
+                    val inputStream = assetManager.open(item)
+                    val outputStream = FileOutputStream(
+                        File(
                             Environment.getExternalStorageDirectory()
-                                .toString() + "/" + APP_PACKAGE_NAME + "/$item"
+                                .toString() + "/" + APP_PACKAGE_NAME,
+                            item
                         )
                     )
-                )
+
+                    try {
+                        inputStream.copyTo(outputStream, bufferSize)
+                    } finally {
+                        inputStream.close()
+                        outputStream.flush()
+                        outputStream.close()
+                    }
+
+                    MediaScannerConnection.scanFile(
+                        this,
+                        arrayOf(
+                            Environment.getExternalStorageDirectory()
+                                .toString() + "/" + APP_PACKAGE_NAME + "/$item"
+                        ),
+                        null
+                    ) { path, uri -> }
+
+
+                    sendBroadcast(
+                        Intent(
+                            Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
+                            Uri.parse(
+                                Environment.getExternalStorageDirectory()
+                                    .toString() + "/" + APP_PACKAGE_NAME + "/$item"
+                            )
+                        )
+                    )
+                }
             }
+
+            // textDescription.text = "Wait a second"
+
+            Handler().postDelayed({
+                goToMain()
+            }, 1000)
+        } else {
+            toast("app not published, please restart app")
         }
-
-        // textDescription.text = "Wait a second"
-
-        Handler().postDelayed({
-            goToMain()
-        }, 1000)
     }
 
     private fun downloadSong() {
