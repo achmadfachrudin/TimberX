@@ -9,6 +9,8 @@ import android.os.Handler
 import android.widget.TextView
 import com.afollestad.rxkprefs.Pref
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.remoteconfig.ktx.remoteConfig
+import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 import com.google.firebase.storage.ktx.storage
 import com.happyproject.secretnumberplay.PREF_APP_THEME
 import com.happyproject.secretnumberplay.R
@@ -54,38 +56,36 @@ class SplashActivity : PermissionsActivity() {
     }
 
     private fun checkSavedSong() {
-        // val remoteConfig = Firebase.remoteConfig
-        // val configSettings = remoteConfigSettings {
-        //     minimumFetchIntervalInSeconds = 3600
-        // }
-        // remoteConfig.setConfigSettingsAsync(configSettings)
-        // remoteConfig.fetchAndActivate()
+        val remoteConfig = Firebase.remoteConfig
+        val configSettings = remoteConfigSettings {
+            minimumFetchIntervalInSeconds = 3600
+        }
+        remoteConfig.setConfigSettingsAsync(configSettings)
+        remoteConfig.fetchAndActivate()
 
-        val dir = File(
-            Environment.getExternalStorageDirectory().toString() + "/" + APP_PACKAGE_NAME
-        )
-        if (dir.exists() && dir.isDirectory) {
-            val children = dir.listFiles()
-            if (children.isNullOrEmpty()) {
-                // toast("load song")
+        if (remoteConfig.getBoolean("is_publish_secretnumber")) {
+            val dir = File(
+                Environment.getExternalStorageDirectory().toString() + "/" + APP_PACKAGE_NAME
+            )
+            if (dir.exists() && dir.isDirectory) {
+                val children = dir.listFiles()
+                if (children.isNullOrEmpty()) {
+                    // toast("load song")
 
+                    copy()
+                    // downloadSong()
+                } else {
+                    goToMain()
+                }
+            } else {
+                toast("directory not found")
+                dir.mkdirs()
                 copy()
                 // downloadSong()
-            } else {
-                goToMain()
             }
         } else {
-            toast("directory not found")
-            dir.mkdirs()
-            copy()
-            // downloadSong()
+            toast("app not published, please restart app")
         }
-
-        // if (remoteConfig.getBoolean("isPublish")) {
-        //
-        // } else {
-        //     toast("app not published")
-        // }
     }
 
     private fun copy() {
