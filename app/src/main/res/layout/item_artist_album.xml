@@ -4,10 +4,10 @@
     >
 
   <data>
-    <import type="com.happyproject.aespa.network.models.ArtworkSize"/>
+    <import type="com.happyproject.kamenrider.network.models.ArtworkSize"/>
     <variable
         name="album"
-        type="com.happyproject.aespa.models.Album"
+        type="com.happyproject.kamenrider.models.Album"
         />
   </data>
 
@@ -21,7 +21,7 @@
       android:paddingTop="6dp"
       >
 
-    <com.happyproject.aespa.ui.widgets.SquareImageView
+    <com.happyproject.kamenrider.ui.widgets.SquareImageView
         android:id="@+id/albumArt"
         android:layout_width="@dimen/album_art_large"
         android:layout_height="@dimen/album_art_large"

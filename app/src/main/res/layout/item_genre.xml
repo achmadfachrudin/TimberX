@@ -5,7 +5,7 @@
 
         <variable
             name="genre"
-            type="com.happyproject.aespa.models.Genre" />
+            type="com.happyproject.kamenrider.models.Genre" />
     </data>
 
     <LinearLayout
