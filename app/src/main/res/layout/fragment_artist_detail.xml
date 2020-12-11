@@ -5,14 +5,14 @@
     >
 
   <data>
-    <import type="com.happyproject.kamenrider.network.models.ArtworkSize"/>
+    <import type="com.kamenrider.songlaguhenshin.network.models.ArtworkSize"/>
     <variable
         name="artist"
-        type="com.happyproject.kamenrider.models.Artist"
+        type="com.kamenrider.songlaguhenshin.models.Artist"
         />
     <variable
         name="artistInfo"
-        type="com.happyproject.kamenrider.network.models.ArtistInfo"
+        type="com.kamenrider.songlaguhenshin.network.models.ArtistInfo"
         />
   </data>
 
@@ -33,7 +33,7 @@
           android:layout_height="270dp"
           >
 
-        <com.happyproject.kamenrider.ui.widgets.SquareImageView
+        <com.kamenrider.songlaguhenshin.ui.widgets.SquareImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/default_album_art_large"

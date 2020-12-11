@@ -24,7 +24,7 @@
 -keepclassmembers class **.R$* {
     public static <fields>;
 }
--keep class com.happyproject.kamenrider.R$raw { *; }
+-keep class com.kamenrider.songlaguhenshin.R$raw { *; }
 
 # JAudioTagger
 -dontwarn org.jaudiotagger.**

@@ -2,10 +2,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
   <data>
-    <import type="com.happyproject.kamenrider.network.models.ArtworkSize"/>
+    <import type="com.kamenrider.songlaguhenshin.network.models.ArtworkSize"/>
     <variable
         name="song"
-        type="com.happyproject.kamenrider.models.Song"
+        type="com.kamenrider.songlaguhenshin.models.Song"
         />
   </data>
 
@@ -119,7 +119,7 @@
 
       </LinearLayout>
 
-      <com.happyproject.kamenrider.ui.widgets.MusicVisualizer
+      <com.kamenrider.songlaguhenshin.ui.widgets.MusicVisualizer
           android:id="@+id/visualizer"
           android:layout_width="30dp"
           android:layout_height="40dp"
@@ -131,7 +131,7 @@
           />
 
 
-      <com.happyproject.kamenrider.ui.widgets.SongPopupMenu
+      <com.kamenrider.songlaguhenshin.ui.widgets.SongPopupMenu
           android:id="@+id/popupMenu"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"

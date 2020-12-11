@@ -6,7 +6,7 @@
 
         <variable
             name="categorySongData"
-            type="com.happyproject.kamenrider.models.CategorySongData" />
+            type="com.kamenrider.songlaguhenshin.models.CategorySongData" />
     </data>
 
     <LinearLayout

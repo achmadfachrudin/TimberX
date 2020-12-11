@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.happyproject.kamenrider">
+    package="com.kamenrider.songlaguhenshin">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
-        android:name="com.happyproject.kamenrider.TimberXApp"
+        android:name="com.kamenrider.songlaguhenshin.TimberXApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -30,7 +30,7 @@
             android:value="@string/ads_app" />
 
         <activity
-            android:name="com.happyproject.kamenrider.ui.activities.SplashActivity"
+            android:name="com.kamenrider.songlaguhenshin.ui.activities.SplashActivity"
             android:theme="@style/AppTheme.Light">
 
             <intent-filter>
@@ -41,7 +41,7 @@
         </activity>
 
         <activity
-            android:name="com.happyproject.kamenrider.ui.activities.MainActivity"
+            android:name="com.kamenrider.songlaguhenshin.ui.activities.MainActivity"
             android:theme="@style/AppTheme.Light">
             <intent-filter>
                 <action android:name="android.intent.action.MUSIC_PLAYER" />
@@ -91,12 +91,12 @@
         </activity>
 
         <activity
-            android:name="com.happyproject.kamenrider.ui.activities.ExpandedControlsActivity"
+            android:name="com.kamenrider.songlaguhenshin.ui.activities.ExpandedControlsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name="com.happyproject.kamenrider.ui.activities.SettingsActivity" />
+        <activity android:name="com.kamenrider.songlaguhenshin.ui.activities.SettingsActivity" />
 
         <service
-            android:name="com.happyproject.kamenrider.playback.TimberMusicService"
+            android:name="com.kamenrider.songlaguhenshin.playback.TimberMusicService"
             android:enabled="true"
             android:exported="true">
 
