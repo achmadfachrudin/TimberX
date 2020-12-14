@@ -44,6 +44,7 @@ import com.kamenrider.songlaguhenshin.constants.Constants.NOW_PLAYING
 import com.kamenrider.songlaguhenshin.databinding.LayoutBottomsheetControlsBinding
 import com.kamenrider.songlaguhenshin.extensions.addFragment
 import com.kamenrider.songlaguhenshin.extensions.hide
+import com.kamenrider.songlaguhenshin.extensions.inflateWithBinding
 import com.kamenrider.songlaguhenshin.extensions.map
 import com.kamenrider.songlaguhenshin.extensions.show
 import com.kamenrider.songlaguhenshin.models.CastStatus
