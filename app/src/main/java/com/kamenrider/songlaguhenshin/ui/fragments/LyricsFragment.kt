@@ -25,6 +25,7 @@ import com.kamenrider.songlaguhenshin.constants.Constants.ALBUM
 import com.kamenrider.songlaguhenshin.constants.Constants.ARTIST
 import com.kamenrider.songlaguhenshin.constants.Constants.SONG
 import com.kamenrider.songlaguhenshin.databinding.FragmentLyricsBinding
+import com.kamenrider.songlaguhenshin.extensions.argument
 import com.kamenrider.songlaguhenshin.extensions.inflateWithBinding
 import com.kamenrider.songlaguhenshin.ui.fragments.base.BaseNowPlayingFragment
 import com.kamenrider.songlaguhenshin.util.AutoClearedValue

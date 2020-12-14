@@ -43,6 +43,9 @@ import com.kamenrider.songlaguhenshin.constants.Constants.ACTION_RESTORE_MEDIA_S
 import com.kamenrider.songlaguhenshin.constants.Constants.NOW_PLAYING
 import com.kamenrider.songlaguhenshin.databinding.LayoutBottomsheetControlsBinding
 import com.kamenrider.songlaguhenshin.extensions.addFragment
+import com.kamenrider.songlaguhenshin.extensions.hide
+import com.kamenrider.songlaguhenshin.extensions.map
+import com.kamenrider.songlaguhenshin.extensions.show
 import com.kamenrider.songlaguhenshin.models.CastStatus
 import com.kamenrider.songlaguhenshin.models.CastStatus.Companion.STATUS_PLAYING
 import com.kamenrider.songlaguhenshin.network.models.ArtworkSize
@@ -214,10 +217,10 @@ class BottomControlsFragment : BaseNowPlayingFragment(), BottomSheetListener {
 
         mainViewModel.customAction
                 .map { it.peekContent() }
-                .observe(this) {
+                .observe(viewLifecycleOwner) {
                     when (it) {
                         ACTION_CAST_CONNECTED -> {
-                            mainViewModel.castLiveData.observe(this, castStatusObserver)
+                            mainViewModel.castLiveData.observe(viewLifecycleOwner, castStatusObserver)
                         }
                         ACTION_CAST_DISCONNECTED -> {
                             isCasting = false

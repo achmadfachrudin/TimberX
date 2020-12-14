@@ -14,6 +14,7 @@
  */
 package com.kamenrider.songlaguhenshin.db
 
+import com.kamenrider.songlaguhenshin.extensions.equalsBy
 import com.kamenrider.songlaguhenshin.extensions.toSongEntityList
 import com.kamenrider.songlaguhenshin.repository.SongsRepository
 

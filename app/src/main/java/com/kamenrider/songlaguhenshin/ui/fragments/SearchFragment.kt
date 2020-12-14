@@ -27,6 +27,7 @@ import com.kamenrider.songlaguhenshin.extensions.addOnItemClick
 import com.kamenrider.songlaguhenshin.extensions.getExtraBundle
 import com.kamenrider.songlaguhenshin.extensions.inflateWithBinding
 import com.kamenrider.songlaguhenshin.databinding.FragmentSearchBinding
+import com.kamenrider.songlaguhenshin.extensions.safeActivity
 import com.kamenrider.songlaguhenshin.extensions.toSongIds
 import com.kamenrider.songlaguhenshin.ui.adapters.AlbumAdapter
 import com.kamenrider.songlaguhenshin.ui.adapters.ArtistAdapter
@@ -34,6 +35,7 @@ import com.kamenrider.songlaguhenshin.ui.adapters.SongsAdapter
 import com.kamenrider.songlaguhenshin.ui.fragments.base.BaseNowPlayingFragment
 import com.kamenrider.songlaguhenshin.ui.viewmodels.SearchViewModel
 import com.kamenrider.songlaguhenshin.util.AutoClearedValue
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SearchFragment : BaseNowPlayingFragment() {
 

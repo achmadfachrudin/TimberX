@@ -21,6 +21,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kamenrider.songlaguhenshin.R
 import com.kamenrider.songlaguhenshin.databinding.ItemSongsBinding
 import com.kamenrider.songlaguhenshin.databinding.ItemSongsHeaderBinding
+import com.kamenrider.songlaguhenshin.extensions.hide
+import com.kamenrider.songlaguhenshin.extensions.inflateWithBinding
+import com.kamenrider.songlaguhenshin.extensions.moveElement
+import com.kamenrider.songlaguhenshin.extensions.show
+import com.kamenrider.songlaguhenshin.extensions.showOrHide
 import com.kamenrider.songlaguhenshin.models.Song
 import com.kamenrider.songlaguhenshin.ui.listeners.PopupMenuListener
 import com.kamenrider.songlaguhenshin.ui.listeners.SortMenuListener

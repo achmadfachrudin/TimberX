@@ -43,6 +43,9 @@ import com.kamenrider.songlaguhenshin.playback.TimberMusicService.Companion.TYPE
 import com.kamenrider.songlaguhenshin.playback.TimberMusicService.Companion.TYPE_ALL_SONGS
 import com.kamenrider.songlaguhenshin.constants.StartPage
 import com.kamenrider.songlaguhenshin.databinding.MainFragmentBinding
+import com.kamenrider.songlaguhenshin.extensions.drawable
+import com.kamenrider.songlaguhenshin.extensions.inflateWithBinding
+import com.kamenrider.songlaguhenshin.extensions.safeActivity
 import com.kamenrider.songlaguhenshin.models.MediaID
 import com.kamenrider.songlaguhenshin.ui.activities.MainActivity
 import com.kamenrider.songlaguhenshin.ui.activities.SettingsActivity

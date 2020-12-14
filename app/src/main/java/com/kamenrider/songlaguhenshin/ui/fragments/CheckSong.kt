@@ -16,7 +16,7 @@ object CheckSong {
         val songList: MutableList<Song> = mutableListOf()
 
         list.forEach {
-            val song = (it as Song)
+            val song = (it as Song)/**/
 
             // if (song.path.contains(Constants.APP_PACKAGE_NAME) &&
             //     song.artist

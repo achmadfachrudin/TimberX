@@ -23,6 +23,11 @@ import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kamenrider.songlaguhenshin.R
 import com.kamenrider.songlaguhenshin.databinding.FragmentPlaylistsBinding
+import com.kamenrider.songlaguhenshin.extensions.addOnItemClick
+import com.kamenrider.songlaguhenshin.extensions.drawable
+import com.kamenrider.songlaguhenshin.extensions.filter
+import com.kamenrider.songlaguhenshin.extensions.inflateWithBinding
+import com.kamenrider.songlaguhenshin.extensions.safeActivity
 import com.kamenrider.songlaguhenshin.models.Playlist
 import com.kamenrider.songlaguhenshin.ui.adapters.PlaylistAdapter
 import com.kamenrider.songlaguhenshin.ui.dialogs.CreatePlaylistDialog
@@ -59,7 +64,7 @@ class PlaylistFragment : MediaItemFragment(), CreatePlaylistDialog.PlaylistCreat
 
         mediaItemFragmentViewModel.mediaItems
                 .filter { it.isNotEmpty() }
-                .observe(this) { list ->
+                .observe(viewLifecycleOwner) { list ->
                     @Suppress("UNCHECKED_CAST")
                     playlistAdapter.updateData(list as List<Playlist>)
                 }
