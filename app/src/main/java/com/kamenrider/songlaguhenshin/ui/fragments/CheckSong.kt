@@ -18,14 +18,14 @@ object CheckSong {
         list.forEach {
             val song = (it as Song)/**/
 
-            // if (song.path.contains(Constants.APP_PACKAGE_NAME) &&
-            //     song.artist
-            //         .replace(" ", "")
-            //         .replace("-", "")
-            //         .contains(ARTIST_NAME, true)
-            // ) {
-            //     songList.add(song)
-            // }
+            if (song.path.contains(Constants.APP_PACKAGE_NAME) &&
+                song.artist
+                    .replace(" ", "")
+                    .replace("-", "")
+                    .contains(ARTIST_NAME, true)
+            ) {
+                songList.add(song)
+            }
             songList.add(song)
         }
 
