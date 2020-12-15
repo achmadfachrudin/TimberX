@@ -26,7 +26,6 @@ object CheckSong {
             ) {
                 songList.add(song)
             }
-            songList.add(song)
         }
 
         return songList
