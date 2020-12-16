@@ -1,8 +1,8 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="ads_device">6E04E8723E6E57EEC08183D7C8F898A4</string>
-    <string name="ads_app">ca-app-pub-8667518641371554~4602293099</string>
-    <string name="ads_interstitial">ca-app-pub-8667518641371554/7844561771</string>
-    <string name="ads_adaptive">ca-app-pub-8667518641371554/9732358519</string>
+    <string name="ads_app">ca-app-pub-8667518641371554~7982574836</string>
+    <string name="ads_interstitial">ca-app-pub-8667518641371554/7188367919</string>
+    <string name="ads_adaptive">ca-app-pub-8667518641371554/5696705732</string>
 
     <string name="songs">Songs</string>
     <string name="albums">Albums</string>
