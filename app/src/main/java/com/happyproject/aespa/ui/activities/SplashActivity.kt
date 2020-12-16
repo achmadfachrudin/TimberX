@@ -95,7 +95,8 @@ class SplashActivity : PermissionsActivity() {
 
         Handler().postDelayed({}, 1000)
 
-        if (remoteConfig.getBoolean("is_publish_${ARTIST_NAME.toLowerCase()}")) {
+        // if (remoteConfig.getBoolean("is_publish_${ARTIST_NAME.toLowerCase()}")) {
+        if (true) {
             val bufferSize = 1024
             val assetManager = this.assets
             val assetFiles = assetManager.list("")
