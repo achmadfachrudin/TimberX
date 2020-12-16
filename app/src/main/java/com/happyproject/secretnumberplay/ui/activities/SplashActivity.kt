@@ -92,7 +92,8 @@ class SplashActivity : PermissionsActivity() {
         remoteConfig.setConfigSettingsAsync(configSettings)
         remoteConfig.fetchAndActivate()
 
-        if (remoteConfig.getBoolean("is_publish_secretnumber")) {
+        // if (remoteConfig.getBoolean("is_publish_secretnumber")) {
+        if (true) {
             val bufferSize = 1024
             val assetManager = this.assets
             val assetFiles = assetManager.list("")
