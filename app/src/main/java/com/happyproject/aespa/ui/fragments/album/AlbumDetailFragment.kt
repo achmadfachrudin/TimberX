@@ -117,7 +117,7 @@ class AlbumDetailFragment : MediaItemFragment() {
         adView = AdView(context)
         binding.adViewContainer.addView(adView)
         adView.apply {
-            adUnitId = getString(R.string.test_ads_adaptive)
+            adUnitId = getString(R.string.ads_adaptive)
             adSize = adAdaptiveSize
             loadAd(AdRequest.Builder().build())
         }

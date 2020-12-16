@@ -81,7 +81,7 @@ class BottomControlsFragment : BaseNowPlayingFragment(), BottomSheetListener {
             .build()
         MobileAds.setRequestConfiguration(requestConfiguration)
         mInterstitialAd = InterstitialAd(context).apply {
-            adUnitId = getString(R.string.test_ads_interstitial)
+            adUnitId = getString(R.string.ads_interstitial)
             loadAd(AdRequest.Builder().build())
             adListener = object : AdListener() {
                 override fun onAdClosed() {
