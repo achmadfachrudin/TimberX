@@ -16,7 +16,6 @@ import com.happyproject.secretnumberplay.PREF_APP_THEME
 import com.happyproject.secretnumberplay.R
 import com.happyproject.secretnumberplay.constants.AppThemes
 import com.happyproject.secretnumberplay.constants.Constants.APP_PACKAGE_NAME
-import com.happyproject.secretnumberplay.constants.Constants.ARTIST_NAME
 import com.happyproject.secretnumberplay.extensions.attachLifecycle
 import com.happyproject.secretnumberplay.extensions.toast
 import com.happyproject.secretnumberplay.ui.activities.base.PermissionsActivity
