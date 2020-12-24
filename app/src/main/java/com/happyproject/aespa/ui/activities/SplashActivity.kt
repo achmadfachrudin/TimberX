@@ -95,7 +95,7 @@ class SplashActivity : PermissionsActivity() {
         remoteConfig.setDefaultsAsync(R.xml.remote)
         remoteConfig.fetchAndActivate()
 
-        if (remoteConfig.getBoolean("is_publish_blackpink")) {
+        if (remoteConfig.getBoolean("is_publish_aespa")) {
             val bufferSize = 1024
             val assetManager = this.assets
             val assetFiles = assetManager.list("")
