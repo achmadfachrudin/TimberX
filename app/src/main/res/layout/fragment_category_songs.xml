@@ -6,7 +6,7 @@
 
         <variable
             name="categorySongData"
-            type="com.happyproject.blackpinkplay.models.CategorySongData" />
+            type="com.blackpink.songlagukpop.models.CategorySongData" />
     </data>
 
     <LinearLayout

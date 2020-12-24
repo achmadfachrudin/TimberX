@@ -24,7 +24,7 @@
 -keepclassmembers class **.R$* {
     public static <fields>;
 }
--keep class com.happyproject.blackpinkplay.R$raw { *; }
+-keep class com.blackpink.songlagukpop.R$raw { *; }
 
 # JAudioTagger
 -dontwarn org.jaudiotagger.**

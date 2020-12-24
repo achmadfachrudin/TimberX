@@ -5,10 +5,10 @@
     >
 
   <data>
-    <import type="com.happyproject.blackpinkplay.network.models.ArtworkSize"/>
+    <import type="com.blackpink.songlagukpop.network.models.ArtworkSize"/>
     <variable
         name="album"
-        type="com.happyproject.blackpinkplay.models.Album"
+        type="com.blackpink.songlagukpop.models.Album"
         />
   </data>
 
@@ -23,7 +23,7 @@
       android:paddingTop="6dp"
       >
 
-    <com.happyproject.blackpinkplay.ui.widgets.SquareImageView
+    <com.blackpink.songlagukpop.ui.widgets.SquareImageView
         android:id="@+id/albumArt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

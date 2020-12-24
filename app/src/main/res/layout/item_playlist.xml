@@ -5,7 +5,7 @@
 
         <variable
             name="playlist"
-            type="com.happyproject.blackpinkplay.models.Playlist" />
+            type="com.blackpink.songlagukpop.models.Playlist" />
     </data>
 
     <LinearLayout
