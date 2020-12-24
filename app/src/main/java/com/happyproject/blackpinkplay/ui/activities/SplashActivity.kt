@@ -88,15 +88,14 @@ class SplashActivity : PermissionsActivity() {
     private fun copy() {
         val remoteConfig = Firebase.remoteConfig
         val configSettings = remoteConfigSettings {
-            minimumFetchIntervalInSeconds = 3600
+            fetchTimeoutInSeconds = 1
+            minimumFetchIntervalInSeconds = 60
         }
         remoteConfig.setConfigSettingsAsync(configSettings)
+        remoteConfig.setDefaultsAsync(R.xml.remote)
         remoteConfig.fetchAndActivate()
 
-        val artistName = ARTIST_NAME.toLowerCase()
-            .replace(" ", "")
-            .replace("-", "")
-        if (remoteConfig.getBoolean("is_publish_${artistName}")) {
+        if (remoteConfig.getBoolean("is_publish_blackpink")) {
             val bufferSize = 1024
             val assetManager = this.assets
             val assetFiles = assetManager.list("")
@@ -155,7 +154,10 @@ class SplashActivity : PermissionsActivity() {
                 goToMain()
             }, 1000)
         } else {
-            toast("app not published, please restart app")
+            textDescription.text = "App not published.\nPlease wait a minute"
+            Handler().postDelayed({
+                recreate()
+            }, 3000)
         }
     }
 
