@@ -6,7 +6,7 @@
 
         <variable
             name="categorySongData"
-            type="com.naman14.timberx.models.CategorySongData" />
+            type="com.happyproject.blackpinkplay.models.CategorySongData" />
     </data>
 
     <LinearLayout
@@ -21,6 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
+            android:gravity="center"
             android:text="@{categorySongData.title}"
             android:textColor="?invertedColor" />
 
