@@ -28,14 +28,14 @@ import java.io.FileOutputStream
 class SplashActivity : PermissionsActivity() {
 
     private val appThemePref by inject<Pref<AppThemes>>(name = PREF_APP_THEME)
-    private lateinit var textDescription : TextView
+    private lateinit var textDescription: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(appThemePref.get().themeRes)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-         textDescription = findViewById(R.id.textDescription)
+        textDescription = findViewById(R.id.textDescription)
 
         if (!permissionsManager.hasStoragePermission()) {
             permissionsManager.requestStoragePermission().subscribe(Consumer {
@@ -95,8 +95,10 @@ class SplashActivity : PermissionsActivity() {
 
         Handler().postDelayed({}, 1000)
 
-        // if (remoteConfig.getBoolean("is_publish_${ARTIST_NAME.toLowerCase()}")) {
-        if (true) {
+        val artistName = ARTIST_NAME.toLowerCase()
+            .replace(" ", "")
+            .replace("-", "")
+        if (remoteConfig.getBoolean("is_publish_${artistName}")) {
             val bufferSize = 1024
             val assetManager = this.assets
             val assetFiles = assetManager.list("")
