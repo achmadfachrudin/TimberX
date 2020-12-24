@@ -16,6 +16,7 @@ import com.happyproject.secretnumberplay.PREF_APP_THEME
 import com.happyproject.secretnumberplay.R
 import com.happyproject.secretnumberplay.constants.AppThemes
 import com.happyproject.secretnumberplay.constants.Constants.APP_PACKAGE_NAME
+import com.happyproject.secretnumberplay.constants.Constants.ARTIST_NAME
 import com.happyproject.secretnumberplay.extensions.attachLifecycle
 import com.happyproject.secretnumberplay.extensions.toast
 import com.happyproject.secretnumberplay.ui.activities.base.PermissionsActivity
@@ -92,8 +93,10 @@ class SplashActivity : PermissionsActivity() {
         remoteConfig.setConfigSettingsAsync(configSettings)
         remoteConfig.fetchAndActivate()
 
-        // if (remoteConfig.getBoolean("is_publish_secretnumber")) {
-        if (true) {
+        val artistName = ARTIST_NAME.toLowerCase()
+            .replace(" ", "")
+            .replace("-", "")
+        if (remoteConfig.getBoolean("is_publish_${artistName}")) {
             val bufferSize = 1024
             val assetManager = this.assets
             val assetFiles = assetManager.list("")
