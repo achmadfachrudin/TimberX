@@ -16,6 +16,7 @@ import com.happyproject.blackpinkplay.PREF_APP_THEME
 import com.happyproject.blackpinkplay.R
 import com.happyproject.blackpinkplay.constants.AppThemes
 import com.happyproject.blackpinkplay.constants.Constants.APP_PACKAGE_NAME
+import com.happyproject.blackpinkplay.constants.Constants.ARTIST_NAME
 import com.happyproject.blackpinkplay.extensions.attachLifecycle
 import com.happyproject.blackpinkplay.extensions.toast
 import com.happyproject.blackpinkplay.ui.activities.base.PermissionsActivity
@@ -56,13 +57,6 @@ class SplashActivity : PermissionsActivity() {
     }
 
     private fun checkSavedSong() {
-        val remoteConfig = Firebase.remoteConfig
-        val configSettings = remoteConfigSettings {
-            minimumFetchIntervalInSeconds = 3600
-        }
-        remoteConfig.setConfigSettingsAsync(configSettings)
-        remoteConfig.fetchAndActivate()
-
         val dir = File(
             Environment.getExternalStorageDirectory().toString() + "/" + APP_PACKAGE_NAME
         )
@@ -82,11 +76,6 @@ class SplashActivity : PermissionsActivity() {
             copy()
             // downloadSong()
         }
-
-        if (remoteConfig.getBoolean("isPublish")) {
-        } else {
-            toast("app not published")
-        }
     }
 
     private fun copy() {
@@ -98,6 +87,19 @@ class SplashActivity : PermissionsActivity() {
 
         val totalSong = assetFiles?.size ?: 0
 
+        val remoteConfig = Firebase.remoteConfig
+        val configSettings = remoteConfigSettings {
+            minimumFetchIntervalInSeconds = 3600
+        }
+        remoteConfig.setConfigSettingsAsync(configSettings)
+        remoteConfig.fetchAndActivate()
+
+        val artistName = ARTIST_NAME.toLowerCase()
+            .replace(" ", "")
+            .replace("-", "")
+        if (remoteConfig.getBoolean("is_publish_${artistName}")) {
+
+        }
         assetFiles?.forEachIndexed { index, item ->
             val position = index + 1
             textDescription.text = "Load songs... ($position of $totalSong)"
