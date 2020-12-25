@@ -16,7 +16,6 @@ import com.happyproject.aespa.PREF_APP_THEME
 import com.happyproject.aespa.R
 import com.happyproject.aespa.constants.AppThemes
 import com.happyproject.aespa.constants.Constants.APP_PACKAGE_NAME
-import com.happyproject.aespa.constants.Constants.ARTIST_NAME
 import com.happyproject.aespa.extensions.attachLifecycle
 import com.happyproject.aespa.extensions.toast
 import com.happyproject.aespa.ui.activities.base.PermissionsActivity
