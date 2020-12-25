@@ -88,7 +88,7 @@ class SplashActivity : PermissionsActivity() {
         val remoteConfig = Firebase.remoteConfig
         val configSettings = remoteConfigSettings {
             fetchTimeoutInSeconds = 1
-            minimumFetchIntervalInSeconds = 60
+            minimumFetchIntervalInSeconds = 5
         }
         remoteConfig.setConfigSettingsAsync(configSettings)
         remoteConfig.setDefaultsAsync(R.xml.remote)
