@@ -36,10 +36,12 @@ import com.blackpink.songlagukpop.constants.AppThemes
 import com.blackpink.songlagukpop.databinding.MainActivityBinding
 import com.blackpink.songlagukpop.extensions.addFragment
 import com.blackpink.songlagukpop.extensions.filter
+import com.blackpink.songlagukpop.extensions.hide
 import com.blackpink.songlagukpop.extensions.map
 import com.blackpink.songlagukpop.extensions.observe
 import com.blackpink.songlagukpop.extensions.replaceFragment
 import com.blackpink.songlagukpop.extensions.setDataBindingContentView
+import com.blackpink.songlagukpop.extensions.show
 import com.blackpink.songlagukpop.models.MediaID
 import com.blackpink.songlagukpop.repository.SongsRepository
 import com.blackpink.songlagukpop.ui.activities.base.PermissionsActivity

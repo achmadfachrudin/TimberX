@@ -43,9 +43,11 @@ import com.blackpink.songlagukpop.constants.Constants.ACTION_RESTORE_MEDIA_SESSI
 import com.blackpink.songlagukpop.constants.Constants.NOW_PLAYING
 import com.blackpink.songlagukpop.databinding.LayoutBottomsheetControlsBinding
 import com.blackpink.songlagukpop.extensions.addFragment
+import com.blackpink.songlagukpop.extensions.hide
 import com.blackpink.songlagukpop.extensions.inflateWithBinding
 import com.blackpink.songlagukpop.extensions.map
 import com.blackpink.songlagukpop.extensions.observe
+import com.blackpink.songlagukpop.extensions.show
 import com.blackpink.songlagukpop.models.CastStatus
 import com.blackpink.songlagukpop.models.CastStatus.Companion.STATUS_PLAYING
 import com.blackpink.songlagukpop.network.models.ArtworkSize
@@ -191,7 +193,7 @@ class BottomControlsFragment : BaseNowPlayingFragment(), BottomSheetListener {
             if (it.isCasting) {
                 isCasting = true
 
-                mainViewModel.castProgressLiveData.observe(this, castProgressObserver)
+                mainViewModel.castProgressLiveData.observe(viewLifecycleOwner, castProgressObserver)
                 setLastFmAlbumImage(binding.bottomContolsAlbumart, it.castSongArtist, it.castSongAlbum, ArtworkSize.SMALL, it.castAlbumId.toLong())
 
                 binding.songArtist.text = getString(R.string.casting_to_x, it.castDeviceName)
@@ -220,7 +222,7 @@ class BottomControlsFragment : BaseNowPlayingFragment(), BottomSheetListener {
                 .observe(this) {
                     when (it) {
                         ACTION_CAST_CONNECTED -> {
-                            mainViewModel.castLiveData.observe(this, castStatusObserver)
+                            mainViewModel.castLiveData.observe(viewLifecycleOwner, castStatusObserver)
                         }
                         ACTION_CAST_DISCONNECTED -> {
                             isCasting = false
