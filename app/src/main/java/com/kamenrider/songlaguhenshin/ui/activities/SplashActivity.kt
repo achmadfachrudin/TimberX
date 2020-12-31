@@ -16,7 +16,6 @@ import com.kamenrider.songlaguhenshin.PREF_APP_THEME
 import com.kamenrider.songlaguhenshin.R
 import com.kamenrider.songlaguhenshin.constants.AppThemes
 import com.kamenrider.songlaguhenshin.constants.Constants.APP_PACKAGE_NAME
-import com.kamenrider.songlaguhenshin.constants.Constants.ARTIST_NAME
 import com.kamenrider.songlaguhenshin.extensions.attachLifecycle
 import com.kamenrider.songlaguhenshin.extensions.toast
 import com.kamenrider.songlaguhenshin.ui.activities.base.PermissionsActivity
@@ -28,14 +27,14 @@ import java.io.FileOutputStream
 class SplashActivity : PermissionsActivity() {
 
     private val appThemePref by inject<Pref<AppThemes>>(name = PREF_APP_THEME)
-    private lateinit var textDescription : TextView
+    private lateinit var textDescription: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(appThemePref.get().themeRes)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-         textDescription = findViewById(R.id.textDescription)
+        textDescription = findViewById(R.id.textDescription)
 
         if (!permissionsManager.hasStoragePermission()) {
             permissionsManager.requestStoragePermission().subscribe(Consumer {
