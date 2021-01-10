@@ -40,7 +40,7 @@ import com.happyproject.aespa.extensions.hide
 import com.happyproject.aespa.extensions.map
 import com.happyproject.aespa.extensions.observe
 import com.happyproject.aespa.extensions.replaceFragment
-import com.happyproject.aespa.extensions.setDataBindingContentView
+//import com.happyproject.aespa.extensions.setDataBindingContentView
 import com.happyproject.aespa.extensions.show
 import com.happyproject.aespa.models.MediaID
 import com.happyproject.aespa.repository.SongsRepository
@@ -61,15 +61,21 @@ class MainActivity : PermissionsActivity(), DeleteSongDialog.OnSongDeleted {
     private val appThemePref by inject<Pref<AppThemes>>(name = PREF_APP_THEME)
 
     private var binding: MainActivityBinding? = null
+    //    private lateinit var binding: MainActivityBinding
     private var bottomSheetListener: BottomSheetListener? = null
     private var bottomSheetBehavior: BottomSheetBehavior<View>? = null
 
     // private var backPressedOnce = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(appThemePref.get().themeRes)
         super.onCreate(savedInstanceState)
-        binding = setDataBindingContentView(R.layout.main_activity)
+        setTheme(appThemePref.get().themeRes)
+//        binding = MainActivityBinding.inflate(layoutInflater)
+//        val view = binding.root
+//        setContentView(view)
+        binding = MainActivityBinding.inflate(getLayoutInflater())
+
+//        binding = setDataBindingContentView(R.layout.main_activity)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
         setupUI()
@@ -217,8 +223,8 @@ class MainActivity : PermissionsActivity(), DeleteSongDialog.OnSongDeleted {
             replaceFragment(fragment = MainFragment())
             Handler().postDelayed({
                 replaceFragment(
-                    R.id.bottomControlsContainer,
-                    BottomControlsFragment()
+                        R.id.bottomControlsContainer,
+                        BottomControlsFragment()
                 )
             }, 150)
 
@@ -227,9 +233,9 @@ class MainActivity : PermissionsActivity(), DeleteSongDialog.OnSongDeleted {
         }
 
         viewModel.navigateToMediaItem
-            .map { it.getContentIfNotHandled() }
-            .filter { it != null }
-            .observe(this) { navigateToMediaItem(it!!) }
+                .map { it.getContentIfNotHandled() }
+                .filter { it != null }
+                .observe(this) { navigateToMediaItem(it!!) }
 
         binding?.let {
             it.viewModel = viewModel
@@ -248,9 +254,9 @@ class MainActivity : PermissionsActivity(), DeleteSongDialog.OnSongDeleted {
         if (getBrowseFragment(mediaId) == null) {
             val fragment = MediaItemFragment.newInstance(mediaId)
             addFragment(
-                fragment = fragment,
-                tag = mediaId.type,
-                addToBackStack = !isRootId(mediaId)
+                    fragment = fragment,
+                    tag = mediaId.type,
+                    addToBackStack = !isRootId(mediaId)
             )
         }
     }

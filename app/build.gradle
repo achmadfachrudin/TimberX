@@ -183,7 +183,7 @@ dependencies {
 
     // Debug
     implementation "com.jakewharton.timber:timber:${versions.timber}"
-    debugImplementation "com.amitshekhar.android:debug-db:${versions.debugDb}"
+//    debugImplementation "com.amitshekhar.android:debug-db:${versions.debugDb}"
 
     // Compose
     implementation "androidx.compose.ui:ui:1.0.0-alpha05"
