@@ -40,7 +40,7 @@ import com.kamenrider.songlaguhenshin.extensions.hide
 import com.kamenrider.songlaguhenshin.extensions.map
 import com.kamenrider.songlaguhenshin.extensions.observe
 import com.kamenrider.songlaguhenshin.extensions.replaceFragment
-import com.kamenrider.songlaguhenshin.extensions.setDataBindingContentView
+//import com.kamenrider.songlaguhenshin.extensions.setDataBindingContentView
 import com.kamenrider.songlaguhenshin.extensions.show
 import com.kamenrider.songlaguhenshin.models.MediaID
 import com.kamenrider.songlaguhenshin.repository.SongsRepository
@@ -61,15 +61,21 @@ class MainActivity : PermissionsActivity(), DeleteSongDialog.OnSongDeleted {
     private val appThemePref by inject<Pref<AppThemes>>(name = PREF_APP_THEME)
 
     private var binding: MainActivityBinding? = null
+//    private lateinit var binding: MainActivityBinding
     private var bottomSheetListener: BottomSheetListener? = null
     private var bottomSheetBehavior: BottomSheetBehavior<View>? = null
 
     // private var backPressedOnce = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(appThemePref.get().themeRes)
         super.onCreate(savedInstanceState)
-        binding = setDataBindingContentView(R.layout.main_activity)
+        setTheme(appThemePref.get().themeRes)
+//        binding = MainActivityBinding.inflate(layoutInflater)
+//        val view = binding.root
+//        setContentView(view)
+        binding = MainActivityBinding.inflate(getLayoutInflater())
+
+//        binding = setDataBindingContentView(R.layout.main_activity)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
         setupUI()
