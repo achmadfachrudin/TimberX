@@ -71,9 +71,8 @@ class MainActivity : PermissionsActivity(), DeleteSongDialog.OnSongDeleted {
         super.onCreate(savedInstanceState)
         setTheme(appThemePref.get().themeRes)
 //        binding = MainActivityBinding.inflate(layoutInflater)
-//        val view = binding.root
-//        setContentView(view)
-        binding = MainActivityBinding.inflate(getLayoutInflater())
+        binding = MainActivityBinding.inflate(layoutInflater)
+        setContentView(requireNotNull(binding).root)
 
 //        binding = setDataBindingContentView(R.layout.main_activity)
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -81,87 +80,10 @@ class MainActivity : PermissionsActivity(), DeleteSongDialog.OnSongDeleted {
         setupUI()
     }
 
-    // private fun checkSavedSong() {
-    //     val dir = File(Environment.getExternalStorageDirectory().toString() + "/" + PACKAGE_NAME)
-    //     if (dir.exists() && dir.isDirectory) {
-    //         val children = dir.listFiles()
-    //         if (children.isNullOrEmpty()) {
-    //             copy()
-    //         } else {
-    //             setupUI()
-    //         }
-    //     } else {
-    //         toast("directory not found")
-    //         dir.mkdirs()
-    //         copy()
-    //     }
-    // }
-
-    // private fun copy() {
-    //     binding?.slidingLayout?.hide()
-    //     binding?.containerDownload?.show()
-    //
-    //     val bufferSize = 1024
-    //     val assetManager = this.assets
-    //     val assetFiles = assetManager.list("")
-    //
-    //     assetFiles?.forEach {
-    //         if (it.contains(".mp3")) {
-    //             val inputStream = assetManager.open(it)
-    //             val outputStream = FileOutputStream(
-    //                 File(
-    //                     Environment.getExternalStorageDirectory().toString() + "/" + PACKAGE_NAME,
-    //                     it
-    //                 )
-    //             )
-    //
-    //             try {
-    //                 inputStream.copyTo(outputStream, bufferSize)
-    //             } finally {
-    //                 inputStream.close()
-    //                 outputStream.flush()
-    //                 outputStream.close()
-    //             }
-    //         }
-    //     }
-    //
-    //     binding?.slidingLayout?.show()
-    //     binding?.containerDownload?.hide()
-    //
-    //     Handler().postDelayed({
-    //         setupUI()
-    //     }, 1000)
-    // }
-
-    // private fun downloadSong() {
-    //     val storage = Firebase.storage
-    //     val listRef = storage.reference.child("audio")
-    //     listRef.listAll()
-    //         .addOnSuccessListener { (items, prefixes) ->
-    //             prefixes.forEach { prefix ->
-    //                 // All the prefixes under listRef.
-    //                 // You may call listAll() recursively on them.
-    //             }
-    //             binding?.slidingLayout?.hide()
-    //             binding?.containerDownload?.show()
-    //             val totalSong = items.size
-    //
-    //             items.forEachIndexed { index, item ->
-    //                 // All the items under listRef.
-    //                 // toast(item.name)
-    //             }
-    //             val itemsList = items
-    //             val list = items
-    //
-    //             // binding?.slidingLayout?.show()
-    //             // binding?.containerDownload?.hide()
-    //             // toast("Download completed")
-    //         }
-    //         .addOnFailureListener {
-    //             toast("Failed when fetch songs")
-    //             // Uh-oh, an error occurred!
-    //         }
-    // }
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
+    }
 
     fun setBottomSheetListener(bottomSheetListener: BottomSheetListener) {
         this.bottomSheetListener = bottomSheetListener
